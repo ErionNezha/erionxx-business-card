@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MR ERIONXX — Kartvizitë 3D — GitHub</title>
+<style>
+:root{--bg:#070b16;--panel:#0d1426;--line:rgba(120,140,200,.16);--txt:#e9edf5;--mut:#93a0b8;--acc:#24e6c6;}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:32px 20px 60px}
+header.hero{text-align:center;padding:44px 20px 30px}
+.hero h1{font-size:clamp(1.8rem,4.5vw,2.8rem);letter-spacing:-.02em}
+.hero h1 .dot{color:var(--acc)}
+.hero p{color:var(--mut);max-width:640px;margin:12px auto 0}
+.badges{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.badge{font-size:.8rem;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03)}
+.badge b{color:var(--acc)}
+section{margin-top:44px}
+h2{font-size:1.25rem;margin-bottom:6px}
+h2 .dot{color:var(--acc)}
+.sub{color:var(--mut);font-size:.95rem;margin-bottom:16px}
+.demo-frame{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#000;box-shadow:0 30px 80px -30px rgba(0,0,0,.7)}
+.demo-frame iframe{width:100%;height:82vh;border:0;display:block;background:#000}
+.open-new{display:inline-block;margin-top:14px;color:var(--acc);text-decoration:none;font-weight:600;font-size:.95rem}
+.open-new:hover{text-decoration:underline}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:-1px}
+.tab{background:var(--panel);border:1px solid var(--line);border-bottom:0;color:var(--mut);
+     padding:10px 18px;border-radius:10px 10px 0 0;cursor:pointer;font-size:.9rem;font-family:ui-monospace,Menlo,Consolas,monospace}
+.tab.active{color:var(--txt);background:#111a30;border-color:var(--acc)}
+.tab.active b{color:var(--acc)}
+.codebox{border:1px solid var(--line);border-radius:0 12px 12px 12px;background:#0a0f1e;position:relative}
+.codebox pre{margin:0;padding:20px;overflow:auto;max-height:640px;font-size:.82rem;line-height:1.55;
+             font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre}
+.codebox code{color:#cdd6ea}
+.copybtn{position:absolute;top:10px;right:10px;background:#16213c;border:1px solid var(--line);color:var(--txt);
+         border-radius:8px;padding:6px 12px;font-size:.78rem;cursor:pointer}
+.copybtn:hover{border-color:var(--acc)}
+.codepane{display:none}.codepane.active{display:block}
+.tk-cmt{color:#5b6b8c;font-style:italic}.tk-str{color:#8ce99a}.tk-kw{color:#c792ea}
+.tk-tag{color:#7dd3fc}.tk-attr{color:#fbbf24}.tk-at{color:#f472b6}.tk-num{color:#fb923c}
+footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);text-align:center;color:var(--mut);font-size:.9rem}
+footer strong{color:var(--txt)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<h1>MR ERIONXX <span class="dot">—</span> Kartvizitë 3D</h1>
+<p>Kartvizitë dixhitale interaktive 3D me animime GSAP: rrotullohet me miun, hapet me klikim.</p>
+<div class="badges"><span class="badge"><b>●</b> Demo Live</span><span class="badge"><b>{ }</b> Kodi Burim</span><span class="badge">GitHub Pages</span></div>
+</header>
+
+<section>
+<h2><span class="dot">▸</span> Demo Live</h2>
+<p class="sub">Provoje direkt këtu — lëviz miun mbi kartë dhe kliko për ta hapur.</p>
+<div class="demo-frame"><iframe src="demo/" title="Demo Live" loading="lazy"></iframe></div>
+<a class="open-new" href="demo/" target="_blank" rel="noopener">Hape demo-n në tab të ri ↗</a>
+</section>
+
+<section>
+<h2><span class="dot">▸</span> Kodi Burim</h2>
+<p class="sub">Kodi i plotë i projektit, i lexueshëm direkt këtu.</p>
+<div class="tabs"><button class="tab active" data-f="f0"><b>●</b> index.html</button>
+<button class="tab" data-f="f1"><b>●</b> styles/main.css</button>
+<button class="tab" data-f="f2"><b>●</b> scripts/main.js</button></div>
+<div class="codepane active" id="pane-f0"><div class="codebox"><button class="copybtn">Kopjo</button><pre><code><span class="tk-at">&lt;!DOCTYPE html&gt;</span>
+&lt;<span class="tk-tag">html</span> <span class="tk-attr">lang</span>=<span class="tk-str">&quot;en&quot;</span>&gt;
+
+&lt;<span class="tk-tag">head</span>&gt;
+  <span class="tk-cmt">&lt;!-- Created by Erion Nezha — © 2026 All rights reserved --&gt;</span>
+  &lt;<span class="tk-tag">meta</span> <span class="tk-attr">charset</span>=<span class="tk-str">&quot;UTF-8&quot;</span>&gt;
+&lt;<span class="tk-tag">meta</span> <span class="tk-attr">http-equiv</span>=<span class="tk-str">&quot;X-UA-Compatible&quot;</span> <span class="tk-attr">content</span>=<span class="tk-str">&quot;IE=edge&quot;</span>&gt;
+  &lt;<span class="tk-tag">meta</span> <span class="tk-attr">name</span>=<span class="tk-str">&quot;viewport&quot;</span> <span class="tk-attr">content</span>=<span class="tk-str">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;
+  &lt;<span class="tk-tag">title</span>&gt;MR ERIONXX&lt;/<span class="tk-tag">title</span>&gt;
+  &lt;<span class="tk-tag">link</span> <span class="tk-attr">rel</span>=<span class="tk-str">&quot;stylesheet&quot;</span> <span class="tk-attr">href</span>=<span class="tk-str">&quot;styles/main.css&quot;</span>&gt;
+&lt;/<span class="tk-tag">head</span>&gt;
+
+&lt;<span class="tk-tag">body</span>&gt;
+  &lt;<span class="tk-tag">main</span>&gt;
+    &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;gradient&quot;</span>&gt;
+      &lt;<span class="tk-tag">svg</span> <span class="tk-attr">viewBox</span>=<span class="tk-str">&quot;0 0 2041 1466&quot;</span> <span class="tk-attr">xmlns</span>=<span class="tk-str">&quot;http://www.w3.org/2000/svg&quot;</span>&gt;
+        &lt;<span class="tk-tag">defs</span>&gt;
+          &lt;<span class="tk-tag">radialGradient</span> <span class="tk-attr">cx</span>=<span class="tk-str">&quot;45.978%&quot;</span> <span class="tk-attr">cy</span>=<span class="tk-str">&quot;42.664%&quot;</span> <span class="tk-attr">fx</span>=<span class="tk-str">&quot;45.978%&quot;</span> <span class="tk-attr">fy</span>=<span class="tk-str">&quot;42.664%&quot;</span> <span class="tk-attr">r</span>=<span class="tk-str">&quot;41.428%&quot;</span>
+            <span class="tk-attr">gradientTransform</span>=<span class="tk-str">&quot;matrix(0 .93844 -1 0 .886 -.005)&quot;</span> <span class="tk-attr">id</span>=<span class="tk-str">&quot;g-teal-blue&quot;</span>&gt;
+            &lt;<span class="tk-tag">stop</span> <span class="tk-attr">stop-color</span>=<span class="tk-str">&quot;#3D00FF&quot;</span> <span class="tk-attr">stop-opacity</span>=<span class="tk-str">&quot;.612&quot;</span> <span class="tk-attr">offset</span>=<span class="tk-str">&quot;0%&quot;</span>&gt;&lt;/<span class="tk-tag">stop</span>&gt;
+            &lt;<span class="tk-tag">stop</span> <span class="tk-attr">stop-color</span>=<span class="tk-str">&quot;#00AC8E&quot;</span> <span class="tk-attr">stop-opacity</span>=<span class="tk-str">&quot;.427&quot;</span> <span class="tk-attr">offset</span>=<span class="tk-str">&quot;57.326%&quot;</span>&gt;&lt;/<span class="tk-tag">stop</span>&gt;
+            &lt;<span class="tk-tag">stop</span> <span class="tk-attr">stop-opacity</span>=<span class="tk-str">&quot;0&quot;</span> <span class="tk-attr">offset</span>=<span class="tk-str">&quot;100%&quot;</span>&gt;&lt;/<span class="tk-tag">stop</span>&gt;
+          &lt;/<span class="tk-tag">radialGradient</span>&gt;
+          &lt;<span class="tk-tag">filter</span> <span class="tk-attr">x</span>=<span class="tk-str">&quot;-6.2%&quot;</span> <span class="tk-attr">y</span>=<span class="tk-str">&quot;-5.8%&quot;</span> <span class="tk-attr">width</span>=<span class="tk-str">&quot;112.4%&quot;</span> <span class="tk-attr">height</span>=<span class="tk-str">&quot;111.7%&quot;</span> <span class="tk-attr">filterUnits</span>=<span class="tk-str">&quot;objectBoundingBox&quot;</span> <span class="tk-attr">id</span>=<span class="tk-str">&quot;b&quot;</span>&gt;
+            &lt;<span class="tk-tag">feGaussianBlur</span> <span class="tk-attr">stdDeviation</span>=<span class="tk-str">&quot;50&quot;</span> <span class="tk-attr">in</span>=<span class="tk-str">&quot;SourceGraphic&quot;</span>&gt;&lt;/<span class="tk-tag">feGaussianBlur</span>&gt;
+          &lt;/<span class="tk-tag">filter</span>&gt;
+        &lt;/<span class="tk-tag">defs</span>&gt;
+        &lt;<span class="tk-tag">path</span>
+          <span class="tk-attr">d</span>=<span class="tk-str">&quot;M464 628c-597.384 444.965-686.384 689.965-267 735 629.076 67.553 930.337-1039.804 1288-862 399.891 198.797 608.891 803.464 627 1814-273.242-730.477-393.909-1265.477-362-1605 31.909-339.523 233.242-662.856 604-970L464 628Z&quot;</span>
+          <span class="tk-attr">fill</span>=<span class="tk-str">&quot;url(#g-teal-blue)&quot;</span> <span class="tk-attr">filter</span>=<span class="tk-str">&quot;url(#b)&quot;</span> <span class="tk-attr">fill-rule</span>=<span class="tk-str">&quot;evenodd&quot;</span>&gt;&lt;/<span class="tk-tag">path</span>&gt;
+      &lt;/<span class="tk-tag">svg</span>&gt;
+    &lt;/<span class="tk-tag">div</span>&gt;
+    &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card-full&quot;</span>&gt;
+      &lt;<span class="tk-tag">section</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card business-card--front-front&quot;</span>&gt;
+        &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card__name large-heading&quot;</span>&gt;
+          &lt;<span class="tk-tag">span</span>&gt;EN&lt;/<span class="tk-tag">span</span>&gt;
+          &lt;<span class="tk-tag">span</span> aria-hidden&gt;EN&lt;/<span class="tk-tag">span</span>&gt;
+        &lt;/<span class="tk-tag">p</span>&gt;
+      &lt;/<span class="tk-tag">section</span>&gt;
+      &lt;<span class="tk-tag">section</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card business-card--front-back&quot;</span>&gt;
+        &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card__rotate&quot;</span>&gt;
+          &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card__text&quot;</span>&gt;
+            &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card__main&quot;</span>&gt;
+              &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;left&quot;</span>&gt;
+                &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card__image&quot;</span>&gt;
+                  &lt;<span class="tk-tag">img</span> <span class="tk-attr">src</span>=<span class="tk-str">&quot;assets/img/tr.png&quot;</span> <span class="tk-attr">alt</span>=<span class="tk-str">&quot;Cyd&quot;</span>&gt;
+                &lt;/<span class="tk-tag">div</span>&gt;
+                &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;text&quot;</span>&gt;
+                  &lt;<span class="tk-tag">h1</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;medium-body caps&quot;</span>&gt;
+                    ERION NEZHA
+                  &lt;/<span class="tk-tag">h1</span>&gt;
+                  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;content&quot;</span>&gt;
+                    &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;xsmall-body business-card__job-title&quot;</span>&gt;
+                       &lt;<span class="tk-tag">span</span>&gt;Software Developer&lt;/<span class="tk-tag">span</span>&gt; 
+          
+                    &lt;/<span class="tk-tag">p</span>&gt;
+                    &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;xsmall-body business-card__email&quot;</span>&gt;
+                      Click: &lt;<span class="tk-tag">a</span> <span class="tk-attr">href</span>=<span class="tk-str">&quot;mailto:erjonixx@proton.me&quot;</span>&gt;Email&lt;/<span class="tk-tag">a</span>&gt;
+                      &lt;<span class="tk-tag">br</span>&gt;
+                      Portofolio: &lt;<span class="tk-tag">a</span> <span class="tk-attr">href</span>=<span class="tk-str">&quot;https://erionnezha.netlify.app/&quot;</span>&gt;Erionxx&lt;/<span class="tk-tag">a</span>&gt;
+                    &lt;/<span class="tk-tag">p</span>&gt;
+
+                    &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;xsmall-body&quot;</span>&gt;
+                    
+                      Hello society ● I am junior web developer proficient in HTML5, CSS3, BootStrap ,JavaScript, kotlin,TypeScript, Passionate about creating responsive, visually appealing web applications. Seeking opportunities to contribute to innovative projects and collaborate with dynamic teams.
+                    &lt;/<span class="tk-tag">p</span>&gt;
+                    &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;xsmall-body&quot;</span>&gt;
+                      
+                    &lt;/<span class="tk-tag">p</span>&gt;
+                  &lt;/<span class="tk-tag">div</span>&gt;
+                  &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card__socials row&quot;</span>&gt;
+                   
+                    &lt;<span class="tk-tag">a</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;xsmall-body caps business-card__github&quot;</span> <span class="tk-attr">href</span>=<span class="tk-str">&quot;https://www.linkedin.com/in/erion-nezha&quot;</span>&gt;Linkedin&lt;/<span class="tk-tag">a</span>&gt;
+     
+                    &lt;<span class="tk-tag">a</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;xsmall-body caps business-card__instagram&quot;</span> <span class="tk-attr">href</span>=<span class="tk-str">&quot;https://www.instagram.com/erjonixx/&quot;</span>&gt;Instagram&lt;/<span class="tk-tag">a</span>&gt;
+                  &lt;/<span class="tk-tag">div</span>&gt;
+                &lt;/<span class="tk-tag">div</span>&gt;
+              &lt;/<span class="tk-tag">div</span>&gt;
+              
+            &lt;/<span class="tk-tag">div</span>&gt;
+
+          &lt;/<span class="tk-tag">div</span>&gt;
+        &lt;/<span class="tk-tag">div</span>&gt;
+      &lt;/<span class="tk-tag">section</span>&gt;
+      &lt;<span class="tk-tag">section</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card business-card--back-front&quot;</span>&gt;
+        &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card__text&quot;</span>&gt;
+          &lt;<span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card__top&quot;</span>&gt;
+            &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;medium-body business-card__question&quot;</span>&gt;
+              &lt;<span class="tk-tag">span</span>&gt;
+                Professional Skills:
+              &lt;/<span class="tk-tag">span</span>&gt;
+            &lt;/<span class="tk-tag">p</span>&gt;
+            &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;small-body color--hotpink&quot;</span>&gt;Teamwork&lt;/<span class="tk-tag">p</span>&gt;
+
+            &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;medium-body business-card__question&quot;</span>&gt;
+              &lt;<span class="tk-tag">span</span>&gt;
+                Education:
+              &lt;/<span class="tk-tag">span</span>&gt;
+            &lt;/<span class="tk-tag">p</span>&gt;
+            &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;small-body&quot;</span>&gt;Inxhinieri Informatike
+              2022 - 2025&lt;/<span class="tk-tag">p</span>&gt;
+
+            &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;medium-body business-card__question&quot;</span>&gt;
+              &lt;<span class="tk-tag">span</span>&gt;
+                Current obsession:
+              &lt;/<span class="tk-tag">span</span>&gt;
+            &lt;/<span class="tk-tag">p</span>&gt;
+            &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;small-body&quot;</span>&gt;Open To Work&lt;/<span class="tk-tag">p</span>&gt;
+          &lt;/<span class="tk-tag">div</span>&gt;
+        &lt;/<span class="tk-tag">div</span>&gt;
+      &lt;/<span class="tk-tag">section</span>&gt;
+      &lt;<span class="tk-tag">section</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;business-card business-card--back-back&quot;</span>&gt;
+        &lt;<span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;small-body caps&quot;</span>&gt;
+          fsociety
+        &lt;/<span class="tk-tag">p</span>&gt;
+      &lt;/<span class="tk-tag">section</span>&gt;
+  &lt;/<span class="tk-tag">main</span>&gt;
+  &lt;<span class="tk-tag">svg</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;clippie&quot;</span> <span class="tk-attr">viewBox</span>=<span class="tk-str">&quot;0 0 720 400&quot;</span> <span class="tk-attr">xmlns</span>=<span class="tk-str">&quot;http://www.w3.org/2000/svg&quot;</span>&gt;
+    &lt;<span class="tk-tag">clipPath</span> <span class="tk-attr">id</span>=<span class="tk-str">&quot;clippie&quot;</span> <span class="tk-attr">clipPathUnits</span>=<span class="tk-str">&quot;objectBoundingBox&quot;</span>&gt;
+      &lt;<span class="tk-tag">path</span>
+        <span class="tk-attr">d</span>=<span class="tk-str">&quot;M720,0 L720,400 L-4.54747351e-13,400 L-4.54747351e-13,0 L720,0 Z M19,54 C19,73.3299662 34.6700338,89 54,89 C63.0705503,89 71.3352062,85.5495557 77.5530176,79.8896173 L74.5431111,76.9828478 C69.2224732,81.4452643 62.3625349,84.1323246 54.875,84.1323246 C37.9612795,84.1323246 24.25,70.4210451 24.25,53.5073246 C24.25,45.735787 27.1447669,38.6403585 31.9148689,33.2404706 L28.5418559,29.981479 C22.6262895,36.2493457 19,44.7011902 19,54 Z M54,19 C45.7707605,19 38.2048519,21.8400576 32.2289601,26.5934871 L35.5209015,29.7719607 C36.7584679,28.7616215 38.0765261,27.8461496 39.4639821,27.036639 L43.9829376,31.5555944 C35.9175233,35.5652241 30.375,43.8890116 30.375,53.5073246 C30.375,67.038301 41.3440237,78.0073246 54.875,78.0073246 C64.493313,78.0073246 72.8171005,72.4648013 76.8267302,64.3993871 L81.3456856,68.9183425 C80.402096,70.5356024 79.3145375,72.058572 78.1005803,73.4696814 L81.0019395,76.2702302 C85.99835,70.2191528 89,62.4601129 89,54 C89,34.6700338 73.3299662,19 54,19 Z&quot;</span>
+        <span class="tk-attr">id</span>=<span class="tk-str">&quot;Combined-Shape&quot;</span> <span class="tk-attr">fill</span>=<span class="tk-str">&quot;#DB4242&quot;</span>&gt;&lt;/<span class="tk-tag">path</span>&gt;
+    &lt;/<span class="tk-tag">clipPath</span>&gt;
+  &lt;/<span class="tk-tag">svg</span>&gt;
+  &lt;<span class="tk-tag">svg</span> <span class="tk-attr">class</span>=<span class="tk-str">&quot;clippie&quot;</span> <span class="tk-attr">viewBox</span>=<span class="tk-str">&quot;0 0 720 400&quot;</span> <span class="tk-attr">xmlns</span>=<span class="tk-str">&quot;http://www.w3.org/2000/svg&quot;</span>&gt;
+    &lt;<span class="tk-tag">clipPath</span> <span class="tk-attr">id</span>=<span class="tk-str">&quot;clippie-mirror&quot;</span> <span class="tk-attr">clipPathUnits</span>=<span class="tk-str">&quot;objectBoundingBox&quot;</span>&gt;
+      &lt;<span class="tk-tag">path</span>
+        <span class="tk-attr">d</span>=<span class="tk-str">&quot;M720,0 L720,400 L0,400 L0,0 L720,0 Z M19,54 C19,73.3299662 34.6700338,89 54,89 C63.0705503,89 71.3352062,85.5495557 77.5530176,79.8896173 L74.5431111,76.9828478 C69.2224732,81.4452643 62.3625349,84.1323246 54.875,84.1323246 C37.9612795,84.1323246 24.25,70.4210451 24.25,53.5073246 C24.25,45.735787 27.1447669,38.6403585 31.9148689,33.2404706 L28.5418559,29.981479 C22.6262895,36.2493457 19,44.7011902 19,54 Z M54,19 C45.7707605,19 38.2048519,21.8400576 32.2289601,26.5934871 L35.5209015,29.7719607 C36.7584679,28.7616215 38.0765261,27.8461496 39.4639821,27.036639 L43.9829376,31.5555944 C35.9175233,35.5652241 30.375,43.8890116 30.375,53.5073246 C30.375,67.038301 41.3440237,78.0073246 54.875,78.0073246 C64.493313,78.0073246 72.8171005,72.4648013 76.8267302,64.3993871 L81.3456856,68.9183425 C80.402096,70.5356024 79.3145375,72.058572 78.1005803,73.4696814 L81.0019395,76.2702302 C85.99835,70.2191528 89,62.4601129 89,54 C89,34.6700338 73.3299662,19 54,19 Z&quot;</span>
+        <span class="tk-attr">id</span>=<span class="tk-str">&quot;Combined-Shape&quot;</span> <span class="tk-attr">fill</span>=<span class="tk-str">&quot;#DB4242&quot;</span>
+        <span class="tk-attr">transform</span>=<span class="tk-str">&quot;translate(360.000000, 200.000000) scale(-1, 1) translate(-360.000000, -200.000000) &quot;</span>&gt;&lt;/<span class="tk-tag">path</span>&gt;
+    &lt;/<span class="tk-tag">clipPath</span>&gt;
+  &lt;/<span class="tk-tag">svg</span>&gt;
+  &lt;<span class="tk-tag">script</span> <span class="tk-attr">src</span>=<span class="tk-str">&quot;scripts/main.js&quot;</span>&gt;&lt;/<span class="tk-tag">script</span>&gt;
+  &lt;<span class="tk-tag">script</span> <span class="tk-attr">src</span>=<span class="tk-str">&quot;scripts/vendor/gsap.min.js&quot;</span>&gt;&lt;/<span class="tk-tag">script</span>&gt;
+&lt;/<span class="tk-tag">body</span>&gt;
+
+&lt;/<span class="tk-tag">html</span>&gt;
+</code></pre></div></div>
+<div class="codepane" id="pane-f1"><div class="codebox"><button class="copybtn">Kopjo</button><pre><code><span class="tk-cmt">/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!../node_modules/sass-resources-loader/lib/loader.js??ruleSet[1].rules[2].use[4]!./assets/scss/app.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/</span>
+:root {
+  --dark: <span class="tk-str">#010101</span>;
+  --darkgrey: <span class="tk-str">#1a1a1a</span>;
+  --light: <span class="tk-str">#f5f2eb</span>;
+  --bezier: cubic-bezier(<span class="tk-num">0.17</span>, <span class="tk-num">0.67</span>, <span class="tk-num">0</span>, <span class="tk-num">1</span>);
+  --font-weight: <span class="tk-num">900</span>;
+}
+
+.sr-only {
+  position: absolute;
+  text-indent: -<span class="tk-num">9999px</span>;
+}
+
+<span class="tk-at">@keyframes</span> fadeIn {
+  to {
+    opacity: <span class="tk-num">1</span>;
+  }
+}
+
+<span class="tk-at">@keyframes</span> fadeUp {
+  to {
+    opacity: <span class="tk-num">1</span>;
+    transform: translateY(<span class="tk-num">0</span>);
+  }
+}
+
+<span class="tk-cmt">/* ============== */</span>
+<span class="tk-cmt">/* typography */</span>
+<span class="tk-cmt">/* ============== */</span>
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li {
+  color: inherit;
+}
+
+h1 span,
+h1 a,
+h2 span,
+h2 a,
+h3 span,
+h3 a,
+h4 span,
+h4 a,
+h5 span,
+h5 a,
+h6 span,
+h6 a,
+p span,
+p a,
+a span,
+a a,
+li span,
+li a {
+  font-family: inherit;
+  color: inherit;
+}
+
+.large-heading {
+  font-size: clamp(<span class="tk-num">9.5rem</span>, <span class="tk-num">16.6666666667vw</span>, <span class="tk-num">20rem</span>);
+  line-height: <span class="tk-num">0.8</span>;
+  letter-spacing: -<span class="tk-num">0.011em</span>;
+  font-variation-settings: <span class="tk-str">&quot;wght&quot;</span><span class="tk-num">900</span>;
+}
+
+
+.medium-body {
+  font-size: clamp(<span class="tk-num">1rem</span>, <span class="tk-num">1.25vw</span>, <span class="tk-num">1.5rem</span>);
+  letter-spacing: -<span class="tk-num">0.011em</span>;
+  font-weight: <span class="tk-num">500</span>;
+  font-variation-settings: <span class="tk-str">&quot;wght&quot;</span><span class="tk-num">500</span>;
+  line-height: <span class="tk-num">1.5</span>;
+}
+
+.small-body {
+  font-size: clamp(<span class="tk-num">0.875rem</span>, <span class="tk-num">1.0833333333vw</span>, <span class="tk-num">1.25rem</span>);
+  letter-spacing: -<span class="tk-num">0.011em</span>;
+  font-weight: <span class="tk-num">500</span>;
+  font-variation-settings: <span class="tk-str">&quot;wght&quot;</span><span class="tk-num">500</span>;
+  line-height: <span class="tk-num">1.5</span>;
+}
+
+.xsmall-body {
+  font-size: clamp(<span class="tk-num">0.625rem</span>, <span class="tk-num">1vw</span>, <span class="tk-num">0.75rem</span>);
+  letter-spacing: -<span class="tk-num">0.011em</span>;
+  font-weight: <span class="tk-num">500</span>;
+  font-variation-settings: <span class="tk-str">&quot;wght&quot;</span> <span class="tk-num">500</span>;
+}
+
+.medium-body span,
+.small-body span,
+.xsmall-body span {
+  font-variation-settings: <span class="tk-str">&quot;wght&quot;</span><span class="tk-num">600</span>;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+<span class="tk-at">@font-face</span> {
+  src: url(../assets/fonts/Inter-Variable.woff2) format(&#x27;woff2&#x27;);
+  font-weight: <span class="tk-str">&quot;normal&quot;</span>;
+  font-family: Inter-Variable;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+body {
+  font-family: Inter-Variable, sans-serif;
+}
+
+<span class="tk-cmt">/* ============== */</span>
+<span class="tk-cmt">/* Business card: */</span>
+<span class="tk-cmt">/* ============== */</span>
+
+main {
+  perspective: <span class="tk-num">800px</span>;
+  max-width: <span class="tk-num">100vw</span>;
+  max-height: <span class="tk-num">100vh</span>;
+  overflow: hidden;
+  width: <span class="tk-num">100</span>%;
+  margin: auto;
+}
+
+.gradient {
+  position: absolute;
+  z-index: <span class="tk-num">0</span>;
+  inset: -<span class="tk-num">20</span>% <span class="tk-num">0</span> <span class="tk-num">0</span> -<span class="tk-num">10</span>%;
+  opacity: <span class="tk-num">0.8</span>;
+}
+
+.gradient svg {
+  width: <span class="tk-num">200vh</span>;
+  height: auto;
+}
+
+<span class="tk-at">@media</span> (max-width: <span class="tk-num">1024px</span>) {
+  main {
+    width: <span class="tk-num">100</span>%;
+  }
+}
+
+.clippie {
+  position: absolute;
+  top: -<span class="tk-num">100px</span>;
+  left: -<span class="tk-num">100px</span>;
+  width: <span class="tk-num">1px</span>;
+  height: <span class="tk-num">1px</span>;
+
+}
+
+.clippie clipPath {
+  --scale: <span class="tk-num">0.00139</span>;
+  --ratio: <span class="tk-num">720</span>/<span class="tk-num">400</span>;
+  transform: scale(var(--scale), calc(var(--scale) * var(--ratio)));
+}
+
+.business-card-full {
+  --x: <span class="tk-num">0deg</span>;
+  --y: <span class="tk-num">0.65</span>;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: <span class="tk-num">100vh</span>;
+  transform: rotateY(calc(var(--y) * <span class="tk-num">300deg</span> - <span class="tk-num">150deg</span>)) rotateX(var(--x));
+  transform-style: preserve-3d;
+  width: clamp(<span class="tk-num">22.5rem</span>, <span class="tk-num">37.5vw</span>, <span class="tk-num">45rem</span>);
+  margin: auto;
+}
+
+.business-card {
+  --z-axis: <span class="tk-num">0px</span>;
+  --scale-x: <span class="tk-num">1</span>;
+  position: absolute;
+  background-color: var(--light);
+  color: var(--dark);
+  padding: clamp(<span class="tk-num">1rem</span>, <span class="tk-num">1vw</span>, <span class="tk-num">2rem</span>);
+  width: <span class="tk-num">100</span>%;
+  height: clamp(<span class="tk-num">12.5rem</span>, <span class="tk-num">20.8333333333vw</span>, <span class="tk-num">25rem</span>);
+  border-radius: <span class="tk-num">0</span> <span class="tk-num">0</span> <span class="tk-num">0.25rem</span> <span class="tk-num">0.25rem</span>;
+  display: flex;
+  flex-wrap: wrap;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  transform: rotateX(var(--rotation)) translateZ(var(--z-axis)) scaleX(var(--scale-x));
+  transform-origin: center top;
+}
+
+.business-card--back-front {
+  color: var(--light);
+  background: var(--darkgrey);
+}
+
+.business-card--front-front,
+.business-card--back-back {
+  clip-path: url(&#x27;#clippie&#x27;);
+}
+
+.business-card--front-back,
+.business-card--back-front {
+  clip-path: url(&#x27;#clippie-mirror&#x27;);
+}
+
+.business-card--front-back,
+.business-card--back-back {
+  --z-axis: -<span class="tk-num">1px</span>;
+  --scale-x: -<span class="tk-num">1</span>;
+}
+
+.business-card__rotate {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  height: <span class="tk-num">100</span>%;
+  transform: scale(-<span class="tk-num">1</span>, -<span class="tk-num">1</span>);
+}
+
+.business-card__main {
+  display: flex;
+  gap: <span class="tk-num">2rem</span>;
+  height: <span class="tk-num">100</span>%;
+}
+
+.business-card .left {
+  display: flex;
+}
+.business-card .text {
+  height: <span class="tk-num">100</span>%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.business-card .content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: <span class="tk-num">1rem</span>;
+  flex-grow: <span class="tk-num">1</span>;
+}
+.business-card .content p {
+  max-width: <span class="tk-num">300px</span>;
+}
+
+
+.business-card--back-back p {
+  margin-left: auto;
+  margin-top: auto;
+}
+
+.business-card svg {
+  margin-left: auto;
+}
+
+.business-card__name span {
+  font-variation-settings: <span class="tk-str">&quot;wght&quot;</span>var(--font-weight);
+  position: absolute;
+}
+
+.business-card__name span:first-of-type {
+  bottom: -<span class="tk-num">0.75rem</span>;
+  left: calc(-<span class="tk-num">100</span>% + <span class="tk-num">5rem</span>);
+}
+
+.business-card__name span:nth-of-type(<span class="tk-num">2</span>) {
+  bottom: -<span class="tk-num">0.75rem</span>;
+  right: -<span class="tk-num">2.5rem</span>;
+}
+
+.business-card__image {
+  flex-shrink: <span class="tk-num">0</span>;
+  width: clamp(<span class="tk-num">1.5rem</span>, <span class="tk-num">4vw</span>, <span class="tk-num">4rem</span>);
+  height: clamp(<span class="tk-num">1.5rem</span>, <span class="tk-num">4vw</span>, <span class="tk-num">4rem</span>);
+  margin-right: <span class="tk-num">1em</span>;
+}
+
+.business-card__image img {
+  width: <span class="tk-num">100</span>%;
+  height: <span class="tk-num">100</span>%;
+  object-fit: cover;
+  border-radius: <span class="tk-num">50</span>%;
+}
+
+.business-card__text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: <span class="tk-num">60</span>%;
+  flex-grow: <span class="tk-num">1</span>;
+  height: <span class="tk-num">100</span>%;
+}
+
+.business-card__job-title {
+  margin-top: <span class="tk-num">0.15em</span>;
+  width: <span class="tk-num">47</span>%;
+}
+
+.business-card__email {
+  margin-top: <span class="tk-num">0.15em</span>;
+  width: <span class="tk-num">40</span>%;
+  flex-grow: <span class="tk-num">1</span>;
+  
+}
+  .business-card__question {
+    margin-top: <span class="tk-num">0.5em</span>;
+  }
+
+.business-card__socials {
+  align-self: flex-end;
+  justify-content: space-between;
+}
+
+<span class="tk-cmt">/* ============== */</span>
+<span class="tk-cmt">/* basic styling */</span>
+<span class="tk-cmt">/* ============== */</span>
+
+*,
+body {
+  margin: <span class="tk-num">0</span>;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  width: <span class="tk-num">100</span>%;
+}
+
+.row.center {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  color: var(--light);
+  background: var(--dark);
+}
+
+::selection {
+  color: var(--light);
+  background: var(--dark);
+}
+
+.color--hotpink {
+  color: hotpink;
+}</code></pre></div></div>
+<div class="codepane" id="pane-f2"><div class="codebox"><button class="copybtn">Kopjo</button><pre><code><span class="tk-kw">const</span> initApp = () =&gt; {
+  <span class="tk-kw">const</span> bCard = document.querySelector(&#x27;.business-card-full&#x27;);
+  <span class="tk-kw">let</span> activeCard = <span class="tk-kw">false</span>
+  <span class="tk-kw">if</span> (bCard) {
+    gsap.set(&#x27;.business-card--front-front, .business-card--front-back&#x27;, {
+      &#x27;--rotation&#x27;: &#x27;30deg&#x27;,
+      marginTop: 100,
+    })
+    gsap.set(&#x27;.business-card--back-front, .business-card--back-back&#x27;, {
+      &#x27;--rotation&#x27;: &#x27;-30deg&#x27;,
+      marginTop: 100,
+    })
+    gsap.to(&#x27;.business-card--front-front, .business-card--front-back&#x27;, {
+      &#x27;--rotation&#x27;: &#x27;15deg&#x27;,
+      marginTop: 0,
+      ease: &#x27;power1.out&#x27;,
+      duration: 0.6,
+      delay: 0.5
+    })
+    gsap.to(&#x27;.business-card--back-front, .business-card--back-back&#x27;, {
+      &#x27;--rotation&#x27;: &#x27;-15deg&#x27;,
+      marginTop: 0,
+      ease: &#x27;power1.out&#x27;,
+      duration: 0.6,
+      delay: 0.5
+    })
+
+    bCard.addEventListener(&#x27;click&#x27;, () =&gt; {
+      bCard.classList.toggle(&#x27;active&#x27;)
+      <span class="tk-kw">const</span> degs = activeCard ? &#x27;0deg&#x27; : &#x27;45deg&#x27;
+      <span class="tk-kw">const</span> rotation = activeCard ? &#x27;15deg&#x27; : &#x27;130deg&#x27;
+      gsap.timeline()
+        .to(&#x27;.business-card-full&#x27;, {
+          &#x27;--x&#x27;: degs,
+          ease: &#x27;power1.out&#x27;,
+          duration: 0.6,
+        })
+      gsap.to(&#x27;.business-card--front-front, .business-card--front-back&#x27;, {
+        &#x27;--rotation&#x27;: rotation,
+        ease: &#x27;elastic.out(1,0.9)&#x27;,
+        duration: 1,
+      })
+      activeCard = !activeCard
+    })
+  }
+}
+
+<span class="tk-kw">const</span> moveCard = (e) =&gt; {
+  <span class="tk-kw">const</span> x = e.clientX ? e.clientX / window.innerWidth : e.targetTouches[0].clientX / window.innerWidth
+  console.log(x);
+  gsap.to(&#x27;.business-card-full&#x27;, {
+    &#x27;--y&#x27;: x,
+    &#x27;--font-weight&#x27;: 700 * x + 200,
+    ease: &#x27;power4.out&#x27;,
+  })
+}
+
+window.addEventListener(&#x27;mousemove&#x27;, moveCard)
+window.addEventListener(&#x27;touchmove&#x27;, moveCard)
+
+document.addEventListener(&#x27;DOMContentLoaded&#x27;, initApp)</code></pre></div></div>
+</section>
+
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026</footer>
+</div>
+<script>
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
+    document.querySelectorAll('.codepane').forEach(function(x){x.classList.remove('active')});
+    t.classList.add('active');
+    document.getElementById('pane-'+t.dataset.f).classList.add('active');
+  });
+});
+document.querySelectorAll('.copybtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var pre=b.parentElement.querySelector('pre');
+    navigator.clipboard.writeText(pre.textContent).then(function(){
+      b.textContent='✓ Kopjuar';setTimeout(function(){b.textContent='Kopjo';},1600);
+    });
+  });
+});
+</script>
+</body>
+</html>
